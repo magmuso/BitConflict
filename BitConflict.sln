@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BitConflict", "BitConflict\BitConflict.vcxproj", "{E5054CE1-7AE3-4FCE-9A37-0E0C87A6E8E9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816} = {7CC1250B-0680-4BCC-AAC8-92F5CF058816}
+		{45975324-0A0E-4989-8E08-B235E4F893CA} = {45975324-0A0E-4989-8E08-B235E4F893CA}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaCppInterface", "LuaCppInterface\LuaCppInterface.vcxproj", "{45975324-0A0E-4989-8E08-B235E4F893CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816} = {7CC1250B-0680-4BCC-AAC8-92F5CF058816}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua", "lua\lua.vcxproj", "{7CC1250B-0680-4BCC-AAC8-92F5CF058816}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5054CE1-7AE3-4FCE-9A37-0E0C87A6E8E9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E5054CE1-7AE3-4FCE-9A37-0E0C87A6E8E9}.Debug|Win32.Build.0 = Debug|Win32
+		{E5054CE1-7AE3-4FCE-9A37-0E0C87A6E8E9}.Debug|x64.ActiveCfg = Debug|Win32
+		{E5054CE1-7AE3-4FCE-9A37-0E0C87A6E8E9}.Release|Win32.ActiveCfg = Release|Win32
+		{E5054CE1-7AE3-4FCE-9A37-0E0C87A6E8E9}.Release|Win32.Build.0 = Release|Win32
+		{E5054CE1-7AE3-4FCE-9A37-0E0C87A6E8E9}.Release|x64.ActiveCfg = Release|Win32
+		{45975324-0A0E-4989-8E08-B235E4F893CA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{45975324-0A0E-4989-8E08-B235E4F893CA}.Debug|Win32.Build.0 = Debug|Win32
+		{45975324-0A0E-4989-8E08-B235E4F893CA}.Debug|x64.ActiveCfg = Debug|x64
+		{45975324-0A0E-4989-8E08-B235E4F893CA}.Debug|x64.Build.0 = Debug|x64
+		{45975324-0A0E-4989-8E08-B235E4F893CA}.Release|Win32.ActiveCfg = Release|Win32
+		{45975324-0A0E-4989-8E08-B235E4F893CA}.Release|Win32.Build.0 = Release|Win32
+		{45975324-0A0E-4989-8E08-B235E4F893CA}.Release|x64.ActiveCfg = Release|x64
+		{45975324-0A0E-4989-8E08-B235E4F893CA}.Release|x64.Build.0 = Release|x64
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816}.Debug|Win32.Build.0 = Debug|Win32
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816}.Debug|x64.ActiveCfg = Debug|x64
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816}.Debug|x64.Build.0 = Debug|x64
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816}.Release|Win32.ActiveCfg = Release|Win32
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816}.Release|Win32.Build.0 = Release|Win32
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816}.Release|x64.ActiveCfg = Release|x64
+		{7CC1250B-0680-4BCC-AAC8-92F5CF058816}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

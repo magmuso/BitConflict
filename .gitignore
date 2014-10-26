@@ -26,3 +26,16 @@
 *.exe
 *.out
 *.app
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+*.sdf
+*.opensdf
+Debug/
+Release/
+*.suo
+LuaCppInterface/
+include/
+lua/
+

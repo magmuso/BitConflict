@@ -1,0 +1,6 @@
+2014-10-18 01:46:41 DEBUG: Window switched to Full Screen
+2014-10-18 01:46:44 DEBUG: Window switched to Windowed
+2014-10-18 01:47:07 DEBUG: Window switched to Full Screen
+2014-10-18 01:47:12 DEBUG: Window switched to Windowed
+2014-10-18 02:05:50 DEBUG: Window switched to Full Screen
+2014-10-18 02:05:52 DEBUG: Window switched to Windowed
