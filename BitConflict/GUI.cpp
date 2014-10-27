@@ -6,6 +6,8 @@ GUI::GUI()
 {
 	// setting default values
 	visible = true;
+	active_color = sf::Color();
+	active_font_name = "default";
 }
 
 
@@ -108,6 +110,18 @@ void GUI::remove_layer(GUILayer * layer)
 	delete layer;
 	layers.remove(layer);
 }
+
+
+void GUI::set_active_font(const std::string & font)
+{
+	active_font_name = font;
+}
+
+void GUI::set_active_color(const sf::Color & color)
+{
+	active_color = color;
+}
+
 
 void GUILayer::update(const long & delta_t)
 {

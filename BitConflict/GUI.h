@@ -80,8 +80,14 @@ namespace BitEngine {
 		
 		void remove_layer(GUILayer * layer);
 
+		void set_active_font(const std::string & font);
+		void set_active_color(const sf::Color & color);
+
 	private:
 		std::list<GUILayer *> layers;
 		bool visible;
+
+		std::string active_font_name;
+		sf::Color active_color;
 	};
 };

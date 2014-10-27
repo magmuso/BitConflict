@@ -99,6 +99,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Logger.hpp" />
     <ClInclude Include="Object2D.h" />
+    <ClInclude Include="ResourceManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BitConflict.cpp" />
@@ -107,6 +108,7 @@
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Object2D.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="UtilExport.hpp" />
   </ItemGroup>
   <ItemGroup>

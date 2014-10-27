@@ -26,6 +26,8 @@ namespace BitEngine{
 		void export()
 		{
 			export_utils();
+			export_input();
+			export_resource_manager();
 			export_gui();
 		}
 
@@ -80,6 +82,56 @@ namespace BitEngine{
 			global.Set("window_xy", window_xy);
 			global.Set("is_fullscreen", is_fullscreen);
 		}
+
+
+		void export_input()
+		{
+
+			auto input = g_game->u_input;
+			auto global = lua->GetGlobalEnvironment();
+			auto keyboard_keys = lua->CreateTable();
+
+			for (int i = 0; i < sf::Keyboard::KeyCount; i++)
+			{
+				keyboard_keys.Set(input->get_key_name((sf::Keyboard::Key)i), i);
+			}
+			
+			global.Set("KeyboardsKeys", keyboard_keys);
+			global.Set("is_key_pressed", lua->CreateFunction<bool(int)>(
+				[&](int key) {
+					return input->is_key_pressed((sf::Keyboard::Key)key);
+				}
+			));
+			global.Set("is_key_typed", lua->CreateFunction<bool(int)>(
+				[&](int key) {
+					return input->is_key_typed((sf::Keyboard::Key)key);
+				}
+			));
+			global.Set("get_local_mouse_position", lua->CreateFunction<LuaTable()>(
+				[&]() {
+					return vector_to_table(input->get_local_mouse_position());
+				}
+			));
+			global.Set("get_global_mouse_position", lua->CreateFunction<LuaTable()>(
+				[&]() {
+					return vector_to_table(input->get_global_mouse_position());
+				}
+			));
+			global.Set("is_mouse_button_pressed", lua->CreateFunction<bool(int)>(
+				[&](int button){
+					if (button < 0 || button > 2) return false;
+					else return input->is_mouse_button_pressed((sf::Mouse::Button)button);
+				}
+			));
+		}
+
+
+		void export_resource_manager()
+		{
+
+		}
+
+
 		void export_gui()
 		{
 			auto global = lua->GetGlobalEnvironment();

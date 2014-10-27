@@ -5,6 +5,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include "Logger.hpp"
+#include "ResourceManager.h"
 
 #define DEFAULT_ANIMATION_INTERVAL 1000
 
@@ -62,15 +63,6 @@ namespace BitEngine {
 		virtual void draw(sf::RenderTarget & target, sf::RenderStates & states);
 		virtual sf::Transformable * get_transformable();
 		sf::Text sfml_text;
-	};
-
-
-	class BitTexture : public sf::Texture
-	{
-	public:
-		BitTexture(unsigned int id_ref);
-		BitTexture(unsigned int id_ref, const std::string & path_to_file);
-		~BitTexture();
 	};
 
 
