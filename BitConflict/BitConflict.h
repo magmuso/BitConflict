@@ -15,6 +15,7 @@ namespace BitEngine{
 		
 		Graphics * u_graphics;
 		Input * u_input;
+		ResourceManager * u_res_man;
 
 		void init();
 		void loop();

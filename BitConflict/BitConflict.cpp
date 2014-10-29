@@ -6,6 +6,7 @@ BitConflict::BitConflict()
 {
 	u_graphics = new Graphics();
 	u_input = new Input();
+	u_res_man = new ResourceManager();
 }
 
 void BitConflict::init()
@@ -38,6 +39,9 @@ void BitConflict::loop()
 
 BitConflict::~BitConflict()
 {
+	delete u_graphics;
+	delete u_input;
+	delete u_res_man;
 }
 
 int main()

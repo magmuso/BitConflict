@@ -128,7 +128,15 @@ namespace BitEngine{
 
 		void export_resource_manager()
 		{
+			auto global = lua->GetGlobalEnvironment();
 
+			auto res_man = g_game->u_res_man;
+
+			auto load_texture = lua->CreateFunction<void(const std::string &, const std::string &)>(
+				std::bind(&ResourceManager::load_texture, res_man));
+			auto load_font = lua->CreateFunction<void(const std::string &, const std::string &)>(
+				std::bind(&ResourceManager::load_font, res_man));
+			auto load_shader = lua->CreateFunction<void(const std::string &, const std::string &, const std::string &)>()
 		}
 
 
