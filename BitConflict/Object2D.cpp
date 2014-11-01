@@ -1,4 +1,5 @@
 #include "Object2D.h"
+#include "BitConflict.h"
 
 using namespace BitEngine;
 
@@ -71,7 +72,7 @@ void Object2D::set_scale(const sf::Vector2f & factors)
 
 const sf::Vector2f & Object2D::get_scale() const
 {
-	return get_transformable()->getScale();
+	return dynamic_cast<const sf::Transformable *>(get_transformable())->getScale();
 }
 
 
@@ -158,14 +159,14 @@ void BitText::change_color()
 }
 
 
-void BitText::draw(sf::RenderTarget & target, sf::RenderStates & states)
+void BitText::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
-	dynamic_cast<sf::Drawable *>(&sfml_text)->draw(target, states);
+	dynamic_cast<const sf::Drawable *>(&sfml_text)->draw(target, states);
 }
 
-sf::Transformable * BitText::get_transformable()
+sf::Transformable * BitText::get_transformable() const
 {
-	return dynamic_cast<sf::Transformable *>(&sfml_text);
+	return const_cast<sf::Transformable *>(dynamic_cast<const sf::Transformable *>(&sfml_text));
 }
 
 
@@ -175,15 +176,15 @@ BitSprite::BitSprite()
 }
 
 
-BitSprite::BitSprite(BitTexture * texture)
+BitSprite::BitSprite(const std::string & texture_name)
 {
-	sprite.setTexture(dynamic_cast<sf::Texture *>(texture));
+	set_texture(texture_name);
 }
 
 
-BitSprite::BitSprite(BitTexture * texture, const sf::Vector2f & size)
+BitSprite::BitSprite(const std::string & texture_name, const sf::Vector2f & size)
 {
-	sprite.setTexture(dynamic_cast<sf::Texture *>(texture));
+	set_texture(texture_name);
 	sprite.setTextureRect(sf::IntRect(0, 0, size.x, size.y));
 }
 
@@ -194,16 +195,18 @@ BitSprite::~BitSprite()
 }
 
 
-void BitSprite::set_texture(BitTexture * texture)
+void BitSprite::set_texture(const std::string & texture_name)
 {
+	auto loaded_texture = g_game->u_res_man->get_texture(texture_name);
+	this->texture_name = texture_name;
 	this->texture = texture;
 	sprite.setTexture(texture);
 }
 
 
-BitTexture * BitSprite::get_texture() const
+std::string BitSprite::get_texture() const
 {
-	return texture;
+	return texture_name;
 }
 
 
@@ -230,14 +233,14 @@ void BitSprite::update(const long & delta_t)
 }
 
 
-void BitSprite::draw(sf::RenderTarget & target, sf::RenderStates & states)
+void BitSprite::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
-	dynamic_cast<sf::Drawable *>(&sprite)->draw(target, states);
+	dynamic_cast<const sf::Drawable *>(&sprite)->draw(target, states);
 }
 
-sf::Transformable * BitSprite::get_transformable()
+sf::Transformable * BitSprite::get_transformable() const
 {
-	return dynamic_cast<sf::Transformable *>(&sprite);
+	return const_cast<sf::Transformable *>(dynamic_cast<const sf::Transformable *>(&sprite));
 }
 
 

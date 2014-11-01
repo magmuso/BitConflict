@@ -35,8 +35,6 @@ namespace BitEngine{
 		void run_main()
 		{
 			lua->LoadStandardLibraries();
-			std::ifstream lua_file;
-			
 
 			std::ifstream t("main.lua");
 			std::string str;
@@ -58,6 +56,14 @@ namespace BitEngine{
 			auto vector2_table = lua->CreateTable();
 			vector2_table.Set("x", xy.x); vector2_table.Set("y", xy.y);
 			return vector2_table;
+		}
+
+		LuaTable color_to_table(const Color & color)
+		{
+			auto color_table = lua->CreateTable();
+			color_table.Set("r", color.r); color_table.Set("g", color.g);
+			color_table.Set("b", color.b); color_table.Set("a", color.a);
+			return color_table;
 		}
 
 
@@ -132,13 +138,37 @@ namespace BitEngine{
 
 			auto res_man = g_game->u_res_man;
 
-			auto load_texture = lua->CreateFunction<void(const std::string &, const std::string &)>(
-				std::bind(&ResourceManager::load_texture, res_man));
-			auto load_font = lua->CreateFunction<void(const std::string &, const std::string &)>(
+			auto load_texture = lua->CreateFunction<void(const std::string, const std::string)>(
+				[&](const std::string name, const std::string filename)
+			{
+				res_man->load_texture(name, filename);
+			});
+/*			auto load_font = lua->CreateFunction<void(std::string, std::string)>(
 				std::bind(&ResourceManager::load_font, res_man));
-			auto load_shader = lua->CreateFunction<void(const std::string &, const std::string &, const std::string &)>()
+			auto load_shader = lua->CreateFunction<void(std::string, std::string, std::string)>(
+				std::bind(&ResourceManager::load_shader, res_man));
+			auto release_texture = lua->CreateFunction<void(std::string)>(
+				std::bind(&ResourceManager::release_texture, res_man));
+			auto release_font = lua->CreateFunction<void(std::string)>(
+				std::bind(&ResourceManager::release_font, res_man));
+			auto release_shader = lua->CreateFunction<void(std::string)>(
+				std::bind(&ResourceManager::release_shader, res_man));
+
+			global.Set("load_texture", load_texture);
+			global.Set("load_font", load_font);
+			global.Set("load_shader", load_shader);
+			global.Set("release_texture", release_texture);
+			global.Set("release_font", release_font);
+			global.Set("release_shader", release_shader);*/
 		}
 
+		void export_2d()
+		{
+			auto global = lua->GetGlobalEnvironment();
+			auto res_man = g_game->u_res_man;
+			
+			//auto sprite2d = lua->CreateUserdata<BitSprite>(new BitSprite());
+		}
 
 		void export_gui()
 		{

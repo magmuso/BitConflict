@@ -33,6 +33,10 @@ namespace BitEngine{
 		void release_font(const std::string & name);
 		void release_shader(const std::string & name);
 
+		BitTexture * get_texture(const std::string & name);
+		sf::Font * get_font(const std::string & name);
+		sf::Shader * get_shader(const std::string & name);
+
 	private:
 		std::map<std::string, BitTexture *> textures;
 		std::map<std::string, sf::Font *> fonts;

@@ -36,7 +36,6 @@ namespace BitEngine {
 		void scale(const sf::Vector2f & factor);
 
 	protected:
-		virtual void draw(sf::RenderTarget & target, sf::RenderStates & states) = 0;
 		virtual sf::Transformable * get_transformable() const = 0;
 
 		std::vector<std::string> effects;
@@ -60,8 +59,8 @@ namespace BitEngine {
 		void change_font();
 		void change_color();
 	protected:
-		virtual void draw(sf::RenderTarget & target, sf::RenderStates & states);
-		virtual sf::Transformable * get_transformable();
+		virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const = 0;
+		virtual sf::Transformable * get_transformable() const = 0;
 		sf::Text sfml_text;
 	};
 
@@ -72,13 +71,13 @@ namespace BitEngine {
 		BitSprite();
 
 		// Binds BitTexture and sets size to automatic
-		BitSprite(BitTexture * texture);
-		BitSprite(BitTexture * texture, const sf::Vector2f & size);
+		BitSprite(const std::string & texture_name);
+		BitSprite(const std::string & texture_name, const sf::Vector2f & size);
 
 		~BitSprite();
 
-		void set_texture(BitTexture * texture);
-		BitTexture * get_texture() const;
+		void set_texture(const std::string & texture_name);
+		std::string get_texture() const;
 
 		void set_color(sf::Color & color);
 
@@ -86,11 +85,12 @@ namespace BitEngine {
 
 		sf::Color get_color() const;
 	protected:
-		virtual void draw(sf::RenderTarget & target, sf::RenderStates & states);
-		virtual sf::Transformable * get_transformable();
+		virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const;
+		virtual sf::Transformable * get_transformable() const;
 		virtual void update(const long & delta_t);
 		sf::RectangleShape sprite;
 		BitTexture * texture;
+		std::string texture_name;
 	};
 
 	class BitAnimatedSprite : public BitSprite
@@ -135,4 +135,3 @@ namespace BitEngine {
 		sf::Vector2u frame_size;
 	};
 };
-

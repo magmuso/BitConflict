@@ -146,3 +146,45 @@ void ResourceManager::release_shader(const std::string & name)
 		g_logger->warn("Shader '" + name + "' does not exists to delete");
 	}
 }
+
+
+BitTexture * ResourceManager::get_texture(const std::string & name)
+{
+	if (textures.find(name) != textures.end())
+	{
+		return textures[name];
+	}
+	else
+	{
+		g_logger->error("Trying to access not existent texture '", name, "'");
+		return nullptr;
+	}
+}
+
+
+sf::Font * ResourceManager::get_font(const std::string & name)
+{
+	if (fonts.find(name) != fonts.end())
+	{
+		return fonts[name];
+	}
+	else
+	{
+		g_logger->error("Trying to access not existent font '", name, "'");
+		return nullptr;
+	}
+}
+
+
+sf::Shader * ResourceManager::get_shader(const std::string & name)
+{
+	if (shaders.find(name) != shaders.end())
+	{
+		return shaders[name];
+	}
+	else
+	{
+		g_logger->error("Trying to access not existent shader '", name, "'");
+		return nullptr;
+	}
+}
