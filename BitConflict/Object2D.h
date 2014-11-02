@@ -25,7 +25,7 @@ namespace BitEngine {
 		void set_position(const sf::Vector2f & position);
 		const sf::Vector2f & get_position() const;
 
-		void set_rotiation(float rotation);
+		void set_rotation(float rotation);
 		float get_rotation() const;
 
 		void set_scale(const sf::Vector2f & factors);
@@ -49,8 +49,8 @@ namespace BitEngine {
 		BitText(const std::string & text, unsigned int size);
 		virtual ~BitText();
 
-		void change_text(const std::string & text);
-		void change_size(unsigned int size);
+		void set_text(const std::string & text);
+		void set_size(unsigned int size);
 
 		std::string get_text() const;
 		unsigned int get_size();
@@ -59,8 +59,8 @@ namespace BitEngine {
 		void change_font();
 		void change_color();
 	protected:
-		virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const = 0;
-		virtual sf::Transformable * get_transformable() const = 0;
+		virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const;
+		virtual sf::Transformable * get_transformable() const;
 		sf::Text sfml_text;
 	};
 

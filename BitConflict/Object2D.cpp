@@ -52,7 +52,7 @@ const sf::Vector2f & Object2D::get_position() const
 }
 
 
-void Object2D::set_rotiation(float rotation)
+void Object2D::set_rotation(float rotation)
 {
 	get_transformable()->setRotation(rotation);
 }
@@ -119,13 +119,13 @@ BitText::~BitText()
 	delete this;
 }
 
-void BitText::change_text(const std::string & text)
+void BitText::set_text(const std::string & text)
 {
 	sfml_text.setString(text);
 }
 
 
-void BitText::change_size(unsigned int size)
+void BitText::set_size(unsigned int size)
 {
 	sfml_text.setCharacterSize(size);
 }
@@ -198,9 +198,12 @@ BitSprite::~BitSprite()
 void BitSprite::set_texture(const std::string & texture_name)
 {
 	auto loaded_texture = g_game->u_res_man->get_texture(texture_name);
-	this->texture_name = texture_name;
-	this->texture = texture;
-	sprite.setTexture(texture);
+	if (loaded_texture != nullptr)
+	{
+		this->texture_name = texture_name;
+		this->texture = texture;
+		sprite.setTexture(texture);
+	}
 }
 
 
