@@ -31,11 +31,12 @@
 [Tt]humbs.db
 *.DS_Store
 *.sdf
+*.opendb
 *.opensdf
 Debug/
 Release/
 *.suo
-LuaCppInterface/
+cppinterface/
 include/
 lua/
 
